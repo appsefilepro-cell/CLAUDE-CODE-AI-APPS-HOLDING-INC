@@ -1,0 +1,67 @@
+trading:
+  pairs:
+    - BTC/USD
+    - ETH/USD
+    - SOL/USD
+
+  timeframes:
+    primary: 5m
+    secondary: 15m
+    tertiary: 1h
+
+  risk_management:
+    max_position_size_percent: 2.0
+    max_drawdown_percent: 10.0
+    stop_loss_percent: 2.0
+    take_profit_percent: 4.0
+    max_open_positions: 3
+    daily_loss_limit: 500
+    trailing_stop: true
+    trailing_stop_percent: 1.5
+
+indicators:
+  rsi:
+    period: 14
+    overbought: 70
+    oversold: 30
+
+  macd:
+    fast_period: 12
+    slow_period: 26
+    signal_period: 9
+
+  bollinger_bands:
+    period: 20
+    std_dev: 2
+
+  ema:
+    short_period: 9
+    medium_period: 21
+    long_period: 50
+
+  adx:
+    period: 14
+    threshold: 25
+
+strategies:
+  mean_reversion:
+    enabled: true
+    rsi_entry_low: 30
+    rsi_entry_high: 70
+    bb_std_dev: 2
+
+  trend_following:
+    enabled: true
+    ema_crossover: true
+    adx_threshold: 25
+
+  hybrid:
+    enabled: false
+    combine_signals: true
+
+agent:
+  loop_interval_seconds: 300
+  max_runtime_hours: 24
+  enable_logging: true
+  enable_notifications: true
+  backtest_mode: false
